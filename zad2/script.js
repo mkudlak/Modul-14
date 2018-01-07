@@ -1,4 +1,4 @@
-/*var GalleryItem = React.createClass({
+/*var GalleryItem = React.createClass({  //MOVIETITLE MOVIEDESC MOVIEIMAGE
     propTypes: {
       image: React.PropTypes.object.isRequired,
     },
@@ -58,18 +58,47 @@ var movies = [
     propTypes: {
         movie: React.PropTypes.object.isRequired,
       },
+      
     render: function() {
         return (
-          React.createElement('li', {key:movie.id},
-          React.createElement('h2', {}, movie.title),
-          React.createElement('p', {}, movie.desc),
-          React.createElement('img', {src: movie.src})
+          React.createElement('li', {},
+          React.createElement(MovieTitle, {title: this.props.movie.title}),
+				  React.createElement(MovieDesc, {desc: this.props.movie.desc}),
+			  	React.createElement(MovieImage, {img: this.props.movie.src})
           )
         )
       },
 
   });
+  var MovieTitle = React.createClass({
+    propTypes: {
+      title: React.PropTypes.string.isRequired,
+    },
 
+    render: function() {
+      return React.createElement('h2', {}, this.props.title)
+    }
+  })
+  
+  var MovieDesc = React.createClass({
+    propTypes: {
+      desc: React.PropTypes.string.isRequired,
+    },
+
+    render: function() {
+      return React.createElement('p', {}, this.props.desc)
+    }
+  })
+  
+  var MovieImage = React.createClass({
+    propTypes: {
+      img: React.PropTypes.string.isRequired,
+    },
+
+    render: function() {
+      return React.createElement('img', {src: this.props.img})
+    }
+  })
   
   
   
