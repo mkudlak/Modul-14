@@ -70,7 +70,7 @@ var movies = [
       },
 
   });
-  var MovieTitle = React.createClass({
+  var MovieTitle = React.createElement({
     propTypes: {
       title: React.PropTypes.string.isRequired,
     },
@@ -80,7 +80,7 @@ var movies = [
     }
   })
   
-  var MovieDesc = React.createClass({
+  var MovieDesc = React.createElement({
     propTypes: {
       desc: React.PropTypes.string.isRequired,
     },
@@ -90,7 +90,7 @@ var movies = [
     }
   })
   
-  var MovieImage = React.createClass({
+  var MovieImage = React.createElement({
     propTypes: {
       img: React.PropTypes.string.isRequired,
     },
