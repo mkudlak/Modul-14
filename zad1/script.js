@@ -4,22 +4,25 @@ var movies = [
       id: 1,
       title: 'Harry Potter',
       desc: 'film o czarodzieju',
-      photo: 'https://images.pexels.com/photos/507410/pexels-photo-507410.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb'
+      src: 'harry.jpg'
     },
     {
       id: 2,
       title: 'Król Lew',
-      desc: 'Film o królu sawanny'
+      desc: 'Film o królu sawanny',
+      src: 'krollew.jpg'
     },
     {
       id: 3,
       title: 'Piekna i Bestia',
-      desc: 'Film o królu sawanny'
+      desc: 'Film o królu sawanny',
+      src: 'pieknaibestia.jpg'
     },
     {
       id: 4,
       title: 'Coach Carter',
-      desc: 'Film o koszykowce'
+      desc: 'Film o koszykowce',
+      src: 'coachcarter.jpg'
     }
   ];
 
@@ -27,7 +30,7 @@ var movies = [
     return React.createElement('li', {key: movie.id},
         React.createElement('h2', {}, movie.title),
         React.createElement('p', {}, movie.desc),
-        React.createElement('image_url', {}, movie.photo)
+        React.createElement('img', { src: movie.src})
       );
   });
 
