@@ -58,13 +58,13 @@ var movies = [
     propTypes: {
         movie: React.PropTypes.object.isRequired,
       },
-      
+
     render: function() {
         return (
           React.createElement('li', {},
           React.createElement(MovieTitle, {title: this.props.movie.title}),
-				  React.createElement(MovieDesc, {desc: this.props.movie.desc}),
-			  	React.createElement(MovieImage, {img: this.props.movie.src})
+          React.createElement(MovieDesc, {desc: this.props.movie.desc}),
+          React.createElement(MovieImage, {img: this.props.movie.src})
           )
         )
       },
@@ -100,7 +100,8 @@ var movies = [
     }
   })
   
-  
+  var element = React.createElement(GalleryItem);
+  ReactDOM.render(element, document.getElementById('app'));
   
   
   
