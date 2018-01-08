@@ -1,4 +1,17 @@
+//
+/*
+Najpierw stwórz klasę Movie za pomocą var Movie = React.createClass({...});. //
 
+Następnie dodaj do niej metodę .render() i przenieś do niej odpowiedni fragment kodu obsługujący 
+wyświetlanie informacji na temat filmu.//
+Po napisaniu metody .render() dokonaj walidacji propsów komponentu dodając parametr propTypes. //
+
+Następnie stwórz instancję (ReactElement) na podstawie klasy Movie za pomocą React.createElement
+(Movie, {key: movie_id, ...więcej_propsow},);
+Pamiętaj, żeby wyciągnąć klucz z elementu li na wysokość deklaracji elementu Movie (tak jak powyżej).
+Kroki od od 1 do 3 należy wykonać również dla klas: MovieTitle, MovieDescription, MoviesList :)
+*/
+///
 var movies = [
     {
       id: 1,
@@ -25,7 +38,7 @@ var movies = [
       src: 'coachcarter.jpg'
     }
   ];
-
+ //TWORZENIE KLASY MOVIE
   var Movie = React.createClass ({
     propTypes: {
         movie: React.PropTypes.object.isRequired,
@@ -42,6 +55,25 @@ var movies = [
       },
 
   });
+  /*POPRZEDNIE ZADANIE
+  var moviesElements = movies.map(function(movie) {
+    return React.createElement('li', {key: movie.id},
+        React.createElement('h2', {}, movie.title),
+        React.createElement('p', {}, movie.desc),
+        React.createElement('img', { src: movie.src})
+      );
+  });
+
+  var element =
+  React.createElement('div', {},
+    React.createElement('h1', {}, 'Lista filmów'),
+    React.createElement('ul', {}, moviesElements)
+  );
+
+  ReactDOM.render(element, document.getElementById('app'));
+  */
+
+//Walidacji propsów komponentu dodając parametr propTypes.
   var MovieTitle = React.createElement({
     propTypes: {
       title: React.PropTypes.string.isRequired,
@@ -73,7 +105,7 @@ var movies = [
   })
   
   var moviesElements = movies.map(function(movie) {
-    return React.createElement('li', {key: movie.id},
+    return React.createElement(Movie
         //Z poprzedniego zadania mam to stworzone wyzej
         /*
         React.createElement('h2', {}, movie.title),
@@ -84,13 +116,8 @@ var movies = [
   });
 
   var element =
-    React.createElement('div', {},
-    React.createElement('h1', {}, 'Lista filmów'),
-    React.createElement('ul', {}, moviesElements),
-    React.createElement('li', {}, MovieTitle),
-    React.createElement('li', {}, MovieDesc),
-    React.createElement('li', {}, MovieImage),
-  );
+    React.createElement(moviesElements, {movie: movie});
+  ;
 
   ReactDOM.render(element, document.getElementById('app'));
   
