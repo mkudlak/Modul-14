@@ -1,17 +1,18 @@
-//
+//Zadanie: Wydzielamy komponenty! 
 /*
-Najpierw stwórz klasę Movie za pomocą var Movie = React.createClass({...});. //
+Teraz Twoim zadaniem będzie podzielenie kodu, który napisaliśmy wcześniej na jak najmniejsze komponenty.
 
-Następnie dodaj do niej metodę .render() i przenieś do niej odpowiedni fragment kodu obsługujący 
-wyświetlanie informacji na temat filmu.//
-Po napisaniu metody .render() dokonaj walidacji propsów komponentu dodając parametr propTypes. //
+Najpierw stwórz klasę Movie za pomocą var Movie = React.createClass({...});. 
 
-Następnie stwórz instancję (ReactElement) na podstawie klasy Movie za pomocą React.createElement
-(Movie, {key: movie_id, ...więcej_propsow},);
+Następnie dodaj do niej metodę .render() i przenieś do niej odpowiedni fragment kodu obsługujący
+ wyświetlanie informacji na temat filmu.
+
+ Po napisaniu metody .render() dokonaj walidacji propsów komponentu dodając parametr propTypes. Następnie 
+stwórz instancję (ReactElement) na podstawie klasy Movie za pomocą 
+React.createElement(Movie, {key: movie_id, ...więcej_propsow},);
+
 Pamiętaj, żeby wyciągnąć klucz z elementu li na wysokość deklaracji elementu Movie (tak jak powyżej).
-Kroki od od 1 do 3 należy wykonać również dla klas: MovieTitle, MovieDescription, MoviesList :)
-*/
-///
+Kroki od od 1 do 3 należy wykonać również dla klas: MovieTitle, MovieDescription, MoviesList :)*/
 var movies = [
     {
       id: 1,
@@ -49,32 +50,16 @@ var movies = [
           React.createElement('li', {},
           React.createElement(MovieTitle, {title: this.props.movie.title}),
           React.createElement(MovieDesc, {desc: this.props.movie.desc}),
-          React.createElement(MovieImage, {img: this.props.movie.src})
+          React.createElement(MovieImage, {img: this.props.movie.src}),
           )
         )
       },
 
   });
-  /*POPRZEDNIE ZADANIE
-  var moviesElements = movies.map(function(movie) {
-    return React.createElement('li', {key: movie.id},
-        React.createElement('h2', {}, movie.title),
-        React.createElement('p', {}, movie.desc),
-        React.createElement('img', { src: movie.src})
-      );
-  });
 
-  var element =
-  React.createElement('div', {},
-    React.createElement('h1', {}, 'Lista filmów'),
-    React.createElement('ul', {}, moviesElements)
-  );
-
-  ReactDOM.render(element, document.getElementById('app'));
-  */
 
 //Walidacji propsów komponentu dodając parametr propTypes.
-  var MovieTitle = React.createElement({
+  var MovieTitle = React.createClass({
     propTypes: {
       title: React.PropTypes.string.isRequired,
     },
@@ -84,7 +69,7 @@ var movies = [
     }
   })
   
-  var MovieDesc = React.createElement({
+  var MovieDesc = React.createClass({
     propTypes: {
       desc: React.PropTypes.string.isRequired,
     },
@@ -94,7 +79,7 @@ var movies = [
     }
   })
   
-  var MovieImage = React.createElement({
+  var MovieImage = React.createClass({
     propTypes: {
       img: React.PropTypes.string.isRequired,
     },
@@ -103,42 +88,27 @@ var movies = [
       return React.createElement('img', {src: this.props.img})
     }
   })
+
+  var MovieList = React.createClass({
+ 
+
+    render: function() {
+      return React.createElement('li', {}, MovieImage)
+    }
+  })
   
   var moviesElements = movies.map(function(movie) {
-    return React.createElement(Movie
-        //Z poprzedniego zadania mam to stworzone wyzej
-        /*
-        React.createElement('h2', {}, movie.title),
-        React.createElement('p', {}, movie.desc),
-        React.createElement('img', { src: movie.src})
-        */
-      );
+    return React.createElement(Movie, {movie: movie});
   });
-
-  var element =
-    React.createElement(moviesElements, {movie: movie});
-  ;
-
+  
+  var element = 
+    React.createElement('div', {},
+      React.createElement('h1', {}, 'Lista SUPER filmów'),
+      React.createElement('ol', {}, moviesElements),
+      React.createElement('li', {}, MovieList));
+  
   ReactDOM.render(element, document.getElementById('app'));
   
   
   
   
-  //Z POPRZEDNIEGO ZADANIA
-  /*
-  var moviesElements = movies.map(function(movie) {
-    return React.createElement('li', {key: movie.id},
-        React.createElement('h2', {}, movie.title),
-        React.createElement('p', {}, movie.desc),
-        React.createElement('img', { src: movie.src})
-      );
-  });
-
-  var element =
-  React.createElement('div', {},
-    React.createElement('h1', {}, 'Lista filmów'),
-    React.createElement('ul', {}, moviesElements)
-  );
-
-  ReactDOM.render(element, document.getElementById('app'));
-*/
