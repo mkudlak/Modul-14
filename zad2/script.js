@@ -89,23 +89,12 @@ var movies = [
     }
   })
 
-  var MovieList = React.createClass({
- 
-
-    render: function() {
-      return React.createElement('li', {}, MovieImage)
-    }
-  })
   
   var moviesElements = movies.map(function(movie) {
     return React.createElement(Movie, {movie: movie});
   });
   
-  var element = 
-    React.createElement('div', {},
-      React.createElement('h1', {}, 'Lista SUPER filmów'),
-      React.createElement('ol', {}, moviesElements),
-      React.createElement('li', {}, MovieList));
+  var element = React.createElement('ol', {}, moviesElements);
   
   ReactDOM.render(element, document.getElementById('app'));
   
