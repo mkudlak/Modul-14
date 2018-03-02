@@ -7,7 +7,7 @@ Na zakończenie pobierania:
 przestań sygnalizować ładowanie,
 ustaw nowego gifa z wyniku pobierania,
 ustaw nowy stan dla wyszukiwanego tekstu.*/
-
+var GIPHY_API_URL = 'https://api.giphy.com';
 
 
 App = React.createClass({
