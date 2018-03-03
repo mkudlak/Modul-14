@@ -8,7 +8,7 @@ przestań sygnalizować ładowanie,
 ustaw nowego gifa z wyniku pobierania,
 ustaw nowy stan dla wyszukiwanego tekstu.*/
 var GIPHY_API_URL = 'https://api.giphy.com';
-
+var GIPHY_PUB_KEY = 'aPUfb6B0gr9Emm5Wx6l84Ij7l6hbYNe7';
 
 App = React.createClass({
     //pobierz na wejściu wpisywany tekst
